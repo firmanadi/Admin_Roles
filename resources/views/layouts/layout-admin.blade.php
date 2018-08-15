@@ -307,9 +307,9 @@
             </ul>
           </li>
           <!-- Control Sidebar Toggle Button -->
-          <li>
+          <!-- <li>
             <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-          </li>
+          </li> -->
         </ul>
       </div>
     </nav>
@@ -343,16 +343,18 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
           <li class="header">MAIN NAVIGATION</li>
-          <li>
+          <li><a href="/admin"><i class="fa fa-book"></i> <span>Dashboard</span></a></li>
+          <li class="treeview">
             <a href="#">
-              <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+              <i class="fa fa-folder"></i> <span>Users, Roles</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-              <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+              <li><a href="/admin/users"><i class="fa fa-book"></i> <span>Users</span></a></li>
+              <li><a href="/admin/roles"><i class="fa fa-book"></i> <span>Roles</span></a></li>
+              <li><a href="/admin/permissions"><i class="fa fa-book"></i> <span>Permissions</span></a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -506,9 +508,6 @@
               <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
             </ul>
           </li>
-          <li><a href="/admin/users"><i class="fa fa-book"></i> <span>Users</span></a></li>
-          <li><a href="/admin/roles"><i class="fa fa-book"></i> <span>Roles</span></a></li>
-          <li><a href="/admin/permissions"><i class="fa fa-book"></i> <span>Permissions</span></a></li>
           <li class="header">LABELS</li>
           <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
           <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
@@ -759,7 +758,22 @@
 <script src="/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="/dist/js/pages/dashboard.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="/dist/js/demo.js"></script>
+<!-- DataTables -->
+<script src="/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- page script -->
+<script>
+  $(function () {
+    $('#example1').DataTable()
+    $('#example2').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
+  })
+</script>
 </body>
 </html>
