@@ -13,7 +13,7 @@
     <h1><i class='fa fa-user-plus'></i> Add User</h1>
     <hr>
 
-    {{ Form::open(array('url' => 'users')) }}
+    {{ Form::open(array('url' => 'admin/users')) }}
 
     <div class="form-group">
         {{ Form::label('name', 'Name') }}
@@ -27,7 +27,7 @@
 
     <div class='form-group'>
         @foreach ($roles as $role)
-            {{ Form::checkbox('roles[]',  $role->id ) }}
+            {{ Form::checkbox('roles[]',  $role->id, false, array('data-toggle' => 'toggle')) }}
             {{ Form::label($role->name, ucfirst($role->name)) }}<br>
 
         @endforeach

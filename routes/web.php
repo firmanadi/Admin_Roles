@@ -17,11 +17,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/admin', 'AdminController@index')->name('admin');
-Route::prefix('admin')->group(function () {
-    Route::resource('roles', 'RoleController');
+Route::group(['middleware' => ['isActive']], function () {
+  Route::get('/admin', 'AdminController@index')->name('admin');
 
-    Route::resource('permissions', 'PermissionController');
+  Route::prefix('admin')->group(function () {
+      Route::resource('roles', 'RoleController');
 
-    Route::resource('users', 'UserController');
+      Route::resource('permissions', 'PermissionController');
+
+      Route::resource('users', 'UserController');
+  });
 });

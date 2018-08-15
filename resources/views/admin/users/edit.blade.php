@@ -3,7 +3,6 @@
 @section('title', '| Edit User')
 
 @section('content')
-
 <div class="content-wrapper">
   <section class="content">
     <div class="row">
@@ -27,11 +26,16 @@
             {{ Form::email('email', null, array('class' => 'form-control')) }}
         </div>
 
+        <div class="form-group">
+          {{ Form::checkbox('active', $user->active, '1', array('data-toggle' => 'toggle') ) }}
+          {{ Form::label('active', 'Active') }}
+        </div>
+
         <h5><b>Give Role</b></h5>
 
         <div class='form-group'>
             @foreach ($roles as $role)
-                {{ Form::checkbox('roles[]',  $role->id, $user->roles ) }}
+                {{ Form::checkbox('roles[]',  $role->id, $user->roles, array('data-toggle' => 'toggle') ) }}
                 {{ Form::label($role->name, ucfirst($role->name)) }}<br>
 
             @endforeach
@@ -49,7 +53,7 @@
 
         </div>
 
-        {{ Form::submit('Add', array('class' => 'btn btn-primary')) }}
+        {{ Form::submit('Save', array('class' => 'btn btn-primary')) }}
 
         {{ Form::close() }}
 
