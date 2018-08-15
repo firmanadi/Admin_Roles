@@ -5,7 +5,11 @@
 @section('content')
 
 <div class="content-wrapper">
-  <div class='col-md-12'>
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box">
+          <div class="box-header">
 
     <h1><i class='fa fa-key'></i> Edit {{$permission->name}}</h1>
     <br>
@@ -20,6 +24,14 @@
 
     {{ Form::close() }}
 
-</div>
+          </div>
+          <!-- /.box-body -->
+        </div>
+      <!-- /.box -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </section>
 </div>
 @endsection

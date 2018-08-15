@@ -5,7 +5,11 @@
 @section('content')
 
 <div class="content-wrapper">
-  <div class='col-md-12'>
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box">
+          <div class="box-header">
 
     <h1><i class='fa fa-key'></i> Add Permission</h1>
     <br>
@@ -16,7 +20,7 @@
         {{ Form::label('name', 'Name') }}
         {{ Form::text('name', '', array('class' => 'form-control')) }}
     </div><br>
-    @if(!$roles->isEmpty()) 
+    @if(!$roles->isEmpty())
         <h4>Assign Permission to Roles</h4>
 
         @foreach ($roles as $role)
@@ -30,6 +34,14 @@
 
     {{ Form::close() }}
 
-</div>
+          </div>
+          <!-- /.box-body -->
+        </div>
+      <!-- /.box -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </section>
 </div>
 @endsection
