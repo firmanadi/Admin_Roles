@@ -10,6 +10,7 @@ use Auth;
 //Importing laravel-permission models
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Facades\Input;
 
 //Enables us to output flash messaging
 use Session;
@@ -17,7 +18,7 @@ use Session;
 class UserController extends Controller {
 
     public function __construct() {
-        $this->middleware(['auth', 'isAdmin']); //isAdmin middleware lets only users with a //specific permission permission to access these resources
+        // $this->middleware(['auth', 'isAdmin']); //isAdmin middleware lets only users with a //specific permission permission to access these resources
     }
 
     /**
@@ -106,14 +107,23 @@ class UserController extends Controller {
     */
     public function update(Request $request, $id) {
         $user = User::findOrFail($id); //Get role specified by id
-
+        if($request->active = 'null'){
+          $request->active = '0';
+        }
+        // dd(Input::get('active'));
     //Validate name, email and password fields
         $this->validate($request, [
             'name'=>'required|max:120',
             'email'=>'required|email|unique:users,email,'.$id,
-            'password'=>'required|min:6|confirmed'
+            'password'=>'required|min:6|confirmed',
+            // 'active'=>'required'
         ]);
-        $input = $request->only(['name', 'email', 'password']); //Retreive the name, email and password fields
+        $user->name       = Input::get('name');
+        $user->email      = Input::get('email');
+        $user->password   = Input::get('password');
+        $user->active     = Input::get('active');
+        $user->save();
+        $input = $request->only(['name', 'email', 'password', 'active']); //Retreive the name, email and password fields
         $roles = $request['roles']; //Retreive all roles
         $user->fill($input)->save();
 
